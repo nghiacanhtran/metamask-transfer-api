@@ -1,0 +1,18 @@
+# Bỏ qua file/directory tạm thời
+*.log
+*.tmp
+*.bak
+
+# Bỏ qua thư mục
+node_modules/
+dist/
+build/
+tests/
+
+# Bỏ qua file hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Bỏ qua file cấu hình IDE
+.vscode/
+.idea/

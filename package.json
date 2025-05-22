@@ -1,0 +1,24 @@
+{
+  "name": "metamask-transfer-api",
+  "version": "1.0.0",
+  "description": "API for transferring funds using MetaMask",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "dotenv": "^10.0.0",
+    "web3": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "jest": "^27.0.6"
+  },
+  "author": "",
+  "license": "ISC"
+}
