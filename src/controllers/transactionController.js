@@ -16,10 +16,11 @@ exports.transferFunds = async (req, res) => {
     }
     
     const { from, to, value, privateKey } = req.body;
-    
+   
     // Ước tính phí gas trước
     const gasEstimate = await web3Service.estimateGas(from, to, value);
-    
+   
+    console.log('Gas price:', gasEstimate.gasPrice);
     // Kiểm tra số dư
     if (!gasEstimate.canSend) {
       return apiResponse.error(

@@ -26,7 +26,7 @@ app.use(cors());
 // Mount routers
 // app.use('/api/auth', auth);
 app.use('/api/wallet', wallet);
-app.use('/api/transfer', transactions);
+app.use('/api/transactions', transactions);
 
 
 module.exports = app;

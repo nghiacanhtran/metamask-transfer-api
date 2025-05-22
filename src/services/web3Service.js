@@ -169,6 +169,36 @@ const estimateGas = async (from, to, value) => {
   }
 };
 
+/**
+ * Gửi giao dịch đã ký
+ * @param {string} signedTx - Giao dịch đã ký
+ * @returns {Promise<Object>} Kết quả giao dịch
+ */
+const sendSignedTransaction = async (signedTx) => {
+  try {
+    if (!web3) {
+      web3 = initWeb3();
+    }
+
+    if (!signedTx || !signedTx.rawTransaction) {
+      throw new Error('Giao dịch đã ký không hợp lệ');
+    }
+
+    const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
+
+    return {
+      transactionHash: receipt.transactionHash,
+      blockNumber: receipt.blockNumber,
+      from: receipt.from,
+      to: receipt.to,
+      gasUsed: receipt.gasUsed,
+      status: receipt.status ? 'Thành công' : 'Thất bại',
+      receipt
+    };
+  } catch (error) {
+    throw new Error(`Lỗi khi gửi giao dịch: ${error.message}`);
+  }
+};
 
 /**
  * Demo: Tạo và gửi giao dịch hoàn chỉnh (chỉ sử dụng cho mục đích demo/test)
@@ -190,6 +220,7 @@ const sendTestTransaction = async (from, to, value, privateKey) => {
       throw new Error(`Địa chỉ người nhận không hợp lệ: ${to}`);
     }
 
+    console.log('privateKey:', privateKey);
     if (!privateKey || typeof privateKey !== 'string' || !privateKey.startsWith('0x')) {
       throw new Error('Private key không hợp lệ');
     }

@@ -22,9 +22,6 @@ const validateTransferFunds = [
   body('privateKey').isString().notEmpty().withMessage('Private key là bắt buộc')
 ];
 
-router.post('/prepare', validatePrepareTransaction, transactionController.prepareTransaction);
-router.post('/send', validateSendSignedTransaction, transactionController.sendSignedTransaction);
-router.get('/status/:txHash', transactionController.checkTransactionStatus);
 router.post('/transfer', validateTransferFunds, transactionController.transferFunds);
 
 module.exports = router;
