@@ -10,7 +10,7 @@ dotenv.config();
 // Route files
 // const auth = require('./routes/api/auth');
 const wallet = require('./routes/wallet');  
-// const transaction = require('./routes/api/transaction');
+const transactions = require('./routes/transactions');
 
 const app = express();
 
@@ -26,7 +26,7 @@ app.use(cors());
 // Mount routers
 // app.use('/api/auth', auth);
 app.use('/api/wallet', wallet);
-// app.use('/api/transaction', transaction);
+app.use('/api/transfer', transactions);
 
 
 module.exports = app;
